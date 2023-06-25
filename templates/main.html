@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:title" content="Multiple Disease Predictor">
+  <meta name="author" content="SSBCA6B">
+  <meta name="og:image" content="static/logo1.png">
+  <meta name="Keywords" content="Flask, Machine Learning, Deep Learning, Artificial Intelligence, AI, ML,DL, Web Development">
+  <meta name="description" content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction.">
+  <title>Disease Predictor</title>
+  <link rel="icon" href="{{ url_for('static', filename = 'logo1.png') }}" type="image/icon type">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap');
+
+*{
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+    html, body{ height:100%; margin:0; }
+header{ height:80px; background:#4d0044; }
+footer{ height:500px; background:#068DA9; }
+
+/* Trick */
+body{ 
+  display:flex; 
+  flex-direction:column;
+	background:#c45bac;  
+}
+
+footer{
+  padding:20px;
+  margin-top:auto;
+  margin-bottom: auto; 
+}
+.nav-link a{
+  color:black;
+}
+.navbar a{
+  color:white;
+  transition:0.3s ease;
+}
+.navbar a:hover{
+color:#white;
+}
+body{
+background-color:whitesmoke;
+}
+footer{
+  background-color:#41644A;
+  color:white;
+}
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  background: #e2e9e1;
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+  padding: 80px;
+  text-align: left;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -30px;
+  padding: 16px;
+  color: #e2e9e1;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  position: absolute;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: #e2e9e1;
+  color: white;
+}
+
+/* The dot/bullet/indicator container */
+.dot-container {
+  text-align: center;
+  padding: 20px;
+  background: #ddd;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+  background-color: #41644A;
+}
+
+/* Add an italic font style to all quotes */
+q {font-style: italic;}
+
+/* Add a blue color to the author */
+.author {color: cornflowerblue;}
+#nav a{
+  font-size:25px;
+}
+#nav  img{
+  width:120px;
+  height:120px;
+}
+.slideshow-container .mySlides{
+  width:100%;
+}
+.align-img img{
+  float:right;
+  width:650px;
+  height:500px;
+}
+  </style>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar fixed-top" id="nav" style="background-color: #41644A; height:10%;">
+    <img src="static/logoo.png" alt="" >
+        <a href="{{ url_for('home') }}"><h2>MULTI DISEASE PREDICTOR</h2></a>
+        <button class="navbar-toggler logo-btn" id="logo-btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto">
+             <li class="nav-item aactive">
+               <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+             </li>
+             <li class="nav-item aactive">
+               <a class="nav-link" href="{{ url_for('diabetesPage') }}">Diabetes</a>
+             </li>
+             <li class="nav-item aactive">
+               <a class="nav-link" href="{{ url_for('cancerPage') }}">Breast Cancer</a>
+             </li>
+             <li class="nav-item aactive">
+                <a class="nav-link" href="{{ url_for('heartPage') }}">Heart</a>
+             </li>
+             <li class="nav-item aactive">
+                <a class="nav-link" href="{{ url_for('kidneyPage') }}">Kidney</a>
+              </li>
+              <li class="nav-item aactive">
+                <a class="nav-link" href="{{ url_for('liverPage') }}">Liver</a>
+              </li>
+           </ul>
+         </div>
+       </nav>
+	<br>
+<br>
+<br>
+<br>
+<main>
+	<div class="container-fluid" style="margin-bottom: 20px;margin-top:1%;">
+	{% block content %}
+
+	{% endblock %}
+  <script>
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+let slideIndexx = 0;
+showsSlides();
+
+function showsSlides() {
+  let j;
+  let slider = document.getElementsByClassName("mySlides");
+  let dotts = document.getElementsByClassName("dot");
+  for (j = 0; j < slider.length; j++) {
+    slider[j].style.display = "none";  
+  }
+  slideIndexx++;
+  if (slideIndexx > slider.length) {slideIndexx = 1}    
+  for (j = 0; j < dotts.length; j++) {
+    dotts[j].className = dotts[j].className.replace(" active", "");
+  }
+  slider[slideIndexx-1].style.display = "block";  
+  dotts[slideIndexx-1].className += " active";
+  setTimeout(showsSlides, 5000); // Change image every 2 seconds
+}
+
+</script>
+    </div>
+  </main>
+  <footer>
+    <div class="container-fluid padding">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <hr class="light">
+            <h5>Contact Details</h5>
+            <hr class="light">
+            <p>+91 99999999</p>
+            <p>contactus@mdp.com</p>
+            <p>1901/B2, Janakpuri</p>
+            <p>New Delhi, 110045</p>
+        </div>
+        <div class="col-md-4">
+            <hr class="light" />
+            <h5>Our Hours</h5>
+            <hr class="light" />
+            <p>Monday: 9pm-5pm</p>
+            <p>Saturday:10am-4pm</p>
+            <p>Sunday: Closed</p>
+        </div>
+        <div class="col-md-4">
+            <hr class="light">
+            <h5>Service Areas</h5>
+            <hr class="light" />
+            <p>New Delhi, Delhi</p>
+            <p>Ahmedabad, Gujarat</p>
+            <p>Chennai, Tamil Nadu</p>
+            <p>Bhopal, Madhya Pradesh</p>
+        </div>
+        <div class="col-12">
+            <hr class="light" />
+            <h5>&copy;mdp.com</h5>
+        </div>
+    </div>
+    </div>
+</footer>
+
+</body>
+</html>
